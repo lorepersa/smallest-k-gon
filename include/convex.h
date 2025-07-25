@@ -42,7 +42,7 @@ namespace ayw
 		float2 ab = b - a, cd = d - c, ac = c - a;
 		float num = cross(ab, ac);
 		float denom = cross(cd, ab);
-		if (denom == 0) return float2(-BIG_FLOAT, -BIG_FLOAT);
+		if (std::abs(denom) < EPS_FLOAT) return float2(-BIG_FLOAT, -BIG_FLOAT);
 		float t = num / denom;
 		float s = 0;
 		if (std::abs(ab.x) > std::abs(ab.y)) s = (ac.x + cd.x * t) / ab.x;
